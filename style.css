@@ -257,7 +257,7 @@ p{
   color: #8E94F2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   margin: 8px;;
 }
 .result{

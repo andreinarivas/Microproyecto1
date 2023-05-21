@@ -15,9 +15,9 @@ const card_available=[
   {name: "psic", image: "./fotos/psic.png"},
 ];
 
-const game_won_div = `<div class="gameover_container"><h3>FIN DE LA PARTIDA</h3><div class="result_container"><h5>RESULTADO</h5><div class="result" id="result_container"></div></div><div class="table_container"><table class="table_results" id="table_score"><tr><th>username</th><th>score</th></tr><tr></tr></table></div></div>`
+const game_won_div = `<div class="gameover_container"><h3>FIN DE LA PARTIDA</h3><div class="result_container"><h5>RESULTADO</h5><div class="result" id="result_container"></div></div><div class="table_container"><table class="table_results" id="table_score"><tr><th>usuario</th><th>puntaje</th></tr><tr></tr></table></div></div>`
 const game_play_div= `<div class="play_area_container"><div class="info_container"><div class="time_container"><h3>TIEMPO:</h3><h4 id="timer">3:00</h4></div><div class="points_container" id="score"><h3>PUNTAJE</h3> <h4>0</h4></div></div><div class="card_container" id="card_container"></div></div>`;
-const game_over_div= '<div class="gameover_container"><h3>FIN DE LA PARTIDA</h3><div class="text_start"><h2>¡SE ACABO EL TIEMPO!</h2><h5>Vuelve a comenzar el juego para volver a intentar <br> Intenta batir el record!</div><div class="table_container"><table class="table_results" id="table_score"><tr><th>username</th><th>score</th></tr></table></div></div>';
+const game_over_div= '<div class="gameover_container"><h3>FIN DE LA PARTIDA</h3><div class="text_start"><h2>¡SE ACABO EL TIEMPO!</h2><h5>Vuelve a comenzar el juego para volver a intentar <br> Intenta batir el record!</div><div class="table_container"><table class="table_results" id="table_score"><tr><th>usuario</th><th>puntaje</th></tr></table></div></div>';
 const first_div='<div class="start_container"><div class="text_start"><h2>BIENVENIDO A METROMEMORY</h2><h5>Descubre los distintos centros de estudiantes de la universidad!. <br> Junta las parejas de logos lo más rápido que puedas <br> Tendrás 3 min para hacerlo, intenta romper el récord!</h5></div><div class="user_input"><label for="username">INGRESA TU NOMBRE</label><input type="text" class="username" id="username"><p class="msg" id="msg"></p></div></div>';
 
 
@@ -146,7 +146,6 @@ function play(username, inter_id){
   cards.forEach(card => {
     card.addEventListener("click", ()=>{
       if(!card.classList.contains("match")&&(!first_card||!second_card)){
-        console.log(first_card)
         card.classList.add("flipped");
         if(!first_card){
           first_card=card;
@@ -221,7 +220,6 @@ function best_scores(username,score){
     localStorage.setItem("scores", JSON.stringify(scores))
   }else{
     let scores = JSON.parse(localStorage.getItem("scores"));
-    console.log(scores);
     scores=check_if_add(scores, score, username);
     localStorage.setItem("scores", JSON.stringify(scores))
     print_scores(scores);
